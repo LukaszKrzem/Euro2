@@ -185,13 +185,19 @@ html{
 .place{
     width: 100%;
     height: 55px;
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255,255,255,0.4);
     display: flex;
     align-items: center;
 }
-.placeCont:last-child {
+.placeCont, .placeCont>div:last-child{
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+}
+.placeCont>div:last-child>.country{
+    border-bottom-right-radius: 20px;
+}
+.placeCont>div:last-child::before{
+    border-bottom-left-radius: 20px;
 }
 .flagCaption{
     margin-left: 10px;
@@ -221,7 +227,7 @@ html{
     background-color: rgba(255, 255, 255, 0.280);
 }
 .place4::before, #place3-5::before, #place3-6::before, #place3-5copy::before, #place3-6copy::before{
-    background-color: inherit;
+    background-color: rgba(236, 236, 236, 0);
 }
 .place4::before, #place3-4::before, #place3-4copy::before{
     content: "4";
@@ -240,11 +246,17 @@ html{
     width: 245px;
     cursor: pointer;
     padding-left: 12px;
+    transition: all 0.5s;
+}
+.country:hover{
+    background-color: rgba(255,255,255,0.4);
 }
 .country-name{
     margin-left: 12px;
 }
-
+.country-active{
+    background-color: rgba(255,255,255,0.4);
+}
 
 .submit{
     height: 50px;

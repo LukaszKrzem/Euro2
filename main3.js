@@ -7,19 +7,39 @@ function drag(ev){
     dragClass = ev.target;
 }
 
-function drop(ev){
-    if(dragClass.className.substr(0, 6) == ev.currentTarget.className.substr(0, 6)){
-    ev.preventDefault();
-    var src = document.getElementById(ev.dataTransfer.getData("src"));
-    var srcParent = src.parentNode;
-    var tgt = ev.currentTarget.firstElementChild;
+const dropzones = document.querySelectorAll(".place");
 
-    ev.currentTarget.replaceChild(src, tgt);
-    srcParent.appendChild(tgt);
-    }
+dropzones.forEach(el=>{
+    el.addEventListener("drop", function( event ) {
+        if(dragClass.className.substr(0, 6) == el.className.substr(0, 6)){
+            event.preventDefault();
+            const src = document.getElementById(event.dataTransfer.getData("src"));
+            const srcParent = src.parentNode;
+            const tgt = el.firstElementChild;
+            el.replaceChild(src, tgt);
+            srcParent.appendChild(tgt);
+            el.classList.remove('country-active');
+            }
+    }, false);
+})
 
-}
+dropzones.forEach(el=>{
+    el.addEventListener("dragenter", function( event ) {
+        if(dragClass.className.substr(0, 6) == el.className.substr(0, 6)){
+            el.classList.add('country-active');
+        }
+    }, false);
+})
 
+dropzones.forEach(el=>{
+    el.addEventListener("dragleave", function( event ) {
+        if(dragClass.className.substr(0, 6) == el.className.substr(0, 6)){
+            el.classList.remove('country-active');
+        }
+    }, false);
+})
+
+//TODO: TOUCHMOVE
 const slider = document.querySelector(".slider");
 const changeNav = (entries, observer) => {
   entries.forEach((entry) => {
@@ -79,6 +99,7 @@ links.forEach(el=>{
 let thirdplacesCont = document.querySelector(".thirdplacesCont");
 let scroll1 = document.querySelector("#submit1");
 let scroll2 = document.querySelector("#submit2");
+let scroll3 = document.querySelector("#submit3");
 scroll1.addEventListener("click", function(){
     thirdplacesCont.scrollIntoView({behavior: "smooth"});
     thirdplacesFill();
@@ -115,6 +136,8 @@ scroll2.addEventListener("click", function(){
     })
     scroll2.style.pointerEvents = "none";
     scroll2.disabled = true;
+    scroll3.style.pointerEvents = "all";
+    scroll3.disabled = false;
 })
 function koFill(){
     let sq1a = document.querySelector(".sq1a");
