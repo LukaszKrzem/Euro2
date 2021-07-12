@@ -1,7 +1,7 @@
 function allowDrop(ev){
     ev.preventDefault();
 }
-
+alert(window.devicePixelRatio)
 function drag(ev){
     ev.dataTransfer.setData("src", ev.target.id);
     dragClass = ev.target;
