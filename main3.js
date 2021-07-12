@@ -41,39 +41,49 @@ dropzones.forEach(el=>{
 
 //TODO: TOUCHMOVE
 const slider = document.querySelector(".slider");
+const listItem = document.querySelector(".list-item");
+slider.style.marginLeft=`-${listItem.offsetWidth*2}px`;
+slider.style.width=`${listItem.offsetWidth*0.9}px`;
+document.querySelector(`[href="#groupCont"]`).classList.add('active');
 const changeNav = (entries, observer) => {
-  entries.forEach((entry) => {
-    if(entry.isIntersecting && entry.intersectionRatio >= 0.55) {
-      document.querySelector('.active').classList.remove('active');
-      let id = entry.target.getAttribute('id');
-      if(id=="groupCont") slider.style.marginLeft="-500px";
-      else if(id=="thirdplacesCont") slider.style.marginLeft="0";
-      else if(id=="koCont") slider.style.marginLeft="500px";
-      document.querySelector(`[href="#${id}"]`).classList.add('active');
-    }
-  });
+    entries.forEach((entry) => {
+        if(entry.isIntersecting && entry.intersectionRatio >= 0.55) {
+            let id = entry.target.getAttribute('id');
+            window.addEventListener("resize", e => {
+            if(id=="groupCont") slider.style.marginLeft=`-${listItem.offsetWidth*2}px`;
+            else if(id=="thirdplacesCont") slider.style.marginLeft="0";
+            else if(id=="koCont") slider.style.marginLeft=`${listItem.offsetWidth*2}px`;
+            slider.style.width=`${listItem.offsetWidth*0.9}px`;
+            });
+            document.querySelector('.active').classList.remove('active');
+            if(id=="groupCont") slider.style.marginLeft=`-${listItem.offsetWidth*2}px`;
+            else if(id=="thirdplacesCont") slider.style.marginLeft="0";
+            else if(id=="koCont") slider.style.marginLeft=`${listItem.offsetWidth*2}px`;
+            document.querySelector(`[href="#${id}"]`).classList.add('active');
+        }
+    });
 }
 const options = {
-  threshold: 0.55
+    threshold: 0.55
 }
 const observer = new IntersectionObserver(changeNav, options);
 const sections = document.querySelectorAll('section');
 sections.forEach((section) => {
-  observer.observe(section);
+    observer.observe(section);
 });
 
 
 const focusOn = function(el){
     let clas = el.className.slice(8);
-    if(clas=="groupContNavItem" || clas=="groupContNavItem active") slider.style.marginLeft="-500px";
+    if(clas=="groupContNavItem" || clas=="groupContNavItem active") slider.style.marginLeft=`-${listItem.offsetWidth*2}px`;
     else if(clas=="thirdplacesContNavItem" || clas=="thirdplacesContNavItem active") slider.style.marginLeft="0";
-    else if(clas=="koContNavItem" || clas=="koContNavItem active") slider.style.marginLeft="500px";
+    else if(clas=="koContNavItem" || clas=="koContNavItem active") slider.style.marginLeft=`${listItem.offsetWidth*2}px`;
 }
 const focusOut = function(){
     let clas = document.querySelector('.active').className.slice(8);
-    if(clas=="groupContNavItem active") slider.style.marginLeft="-500px";
+    if(clas=="groupContNavItem active") slider.style.marginLeft=`-${listItem.offsetWidth*2}px`;
     else if(clas=="thirdplacesContNavItem active") slider.style.marginLeft="0";
-    else if(clas=="koContNavItem active") slider.style.marginLeft="500px";
+    else if(clas=="koContNavItem active") slider.style.marginLeft=`${listItem.offsetWidth*2}px`;
 }
 
 

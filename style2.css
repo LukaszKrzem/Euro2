@@ -41,7 +41,7 @@ html{
     justify-content: center;
 }
 .list-item{
-    min-width: 250px;
+    width: 20%;
 }
 
 .navItem{
@@ -54,12 +54,10 @@ html{
 }
 .slider{
     height: 3px;
-    width: 200px;
     background: #fff;
-    transition: .5s ease-in-out;
+    transition: .8s ease-in-out;
     position: absolute;
     bottom: 0px;
-    margin-left: -500px;
 }
 
 /*GROUP CONTAINERS*/
@@ -69,23 +67,18 @@ html{
     display: grid;
     justify-items: center;
     align-items: center;
+    position: absolute;
 }
 .groupCont{
     padding: 40px 10% 0;
     grid-template-columns: 1fr 1fr 1fr;
     background: linear-gradient(to bottom right, var(--backgrouund-second) 0%, var(--background-first) 100%);
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 .thirdplacesCont{
-    position: absolute;
     top: 100vh;
-    left: 0;
     background: linear-gradient(to top right, var(--backgrouund-second) 0%, var(--background-first) 100%);
 }
 .koCont{
-    position: absolute;
     top: 200vh;
     padding: 40px 0;
     height: 180vh /*100vh*/;
@@ -108,7 +101,7 @@ html{
 .koGame{
     background-color: rgba(236, 236, 236, 0.432);
     border-radius: 20px;
-    width: 245px;
+    width: 60%;
     height: 110px/*80px*/;
     display: flex;
     flex-direction: column;
@@ -170,7 +163,7 @@ html{
     background-color: rgba(255, 255, 255, 0.644);
 }
 .country-flag{
-    height: 30px;
+    height: 35px;
     pointer-events: none;
 }
 .placeCont{
@@ -307,6 +300,7 @@ html{
 }
 .koGame .country{
     position: relative;
+    width: 100%;
 }
 .koGame .country::after{
     content: "";
@@ -351,7 +345,7 @@ label .country{
     background: #ff7c22;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1250px) {
     .groupCont {
         grid-template-columns: 1fr 1fr;
         height: 150vh;
@@ -368,9 +362,61 @@ label .country{
     #submit1{
         grid-column: 1/3;
     }
+    .koGame label p{
+        display: none;
+    }
 }
-@media (max-width: 1100px) {
-    .koGame, .koGame label, .koGame .country{
-        width: 200px;
+@media (max-width: 900px) {
+    .nav-list{
+        align-content: stretch;
+    }
+    .list-item{
+        flex: 1;
+    }
+}
+@media (max-width: 800px) {
+    .koGame .country-flag,
+    .koGame .country::after{
+        height: 30px;
+        width: 30px;
+    }
+    .koGame .country::after{
+        top: 12px;
+    }
+    .groupCont{
+        padding: 40px 5% 0;
+    }
+}
+@media (max-width: 700px) {
+    .groupCont .group{
+        width: 250px;
+    }
+}
+@media (max-width: 600px) {
+    .koGame .country::after{
+        display: none;
+    }
+    .koGame .country{
+        justify-content: center;
+        padding: 0;
+    }
+    .groupCont {
+        grid-template-columns: 1fr;
+        height: 300vh;
+    }
+    .thirdplacesCont{
+        top: 300vh;
+    }
+    .koCont{
+        top: 400vh;
+    }
+    body{
+        height: 570vh;
+    }
+    #submit1{
+        grid-column: 1;
+    }
+    .groupCont .group{
+        width: 300px;
     }
 }
