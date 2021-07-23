@@ -50,7 +50,7 @@ slider.style.width=`${listItem.offsetWidth*0.9}px`;
 document.querySelector(`[href="#groupCont"]`).classList.add('active');
 const changeNav = (entries, observer) => {
     entries.forEach((entry) => {
-        if(entry.isIntersecting && entry.intersectionRatio >= 0.55) {
+        if(entry.isIntersecting && entry.intersectionRatio >= 0.45) {
             let id = entry.target.getAttribute('id');
             window.addEventListener("resize", e => {
             if(id=="groupCont") slider.style.marginLeft=`-${listItem.offsetWidth*2}px`;
@@ -67,7 +67,7 @@ const changeNav = (entries, observer) => {
     });
 }
 const options = {
-    threshold: 0.55
+    threshold: 0.45
 }
 const observer = new IntersectionObserver(changeNav, options);
 const sections = document.querySelectorAll('section');
@@ -224,6 +224,8 @@ function koFill(){
                             fNextEl.checked = false;
                         })
                         e.nextElementSibling.innerHTML=el.nextElementSibling.innerHTML;
+                        scroll3.style.pointerEvents = "none";
+                        scroll3.disabled = true;
                     }
                 }
             })
@@ -249,6 +251,8 @@ function koFill(){
                                 fNextEl.checked = false;
                             })
                             e.nextElementSibling.innerHTML=el.nextElementSibling.innerHTML;
+                            scroll3.style.pointerEvents = "none";
+                            scroll3.disabled = true;
                         }
                     }
                 }
@@ -273,6 +277,8 @@ function koFill(){
                                 eNextEl.checked = false;
                             })
                             e.nextElementSibling.innerHTML=el.nextElementSibling.innerHTML;
+                            scroll3.style.pointerEvents = "none";
+                            scroll3.disabled = true;
                         }
                     }
                 }
