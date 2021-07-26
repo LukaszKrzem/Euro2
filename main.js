@@ -9,7 +9,7 @@ function drag(ev){
 
 const dropzones = document.querySelectorAll(".place");
 
-dropzones.forEach(el=>{
+dropzones.forEach(el => {
     el.addEventListener("drop", function( event ) {
         if(dragClass.className.substr(0, 6) == el.className.substr(0, 6)){
             event.preventDefault();
@@ -23,7 +23,7 @@ dropzones.forEach(el=>{
     }, false);
 })
 
-dropzones.forEach(el=>{
+dropzones.forEach(el => {
     el.addEventListener("dragenter", function( event ) {
         if(dragClass.className.substr(0, 6) == el.className.substr(0, 6)){
             /*if(event.currentTarget.firstElementChild.lastElementChild.className == "country-name"){
@@ -34,7 +34,7 @@ dropzones.forEach(el=>{
     }, false);
 })
 
-dropzones.forEach(el=>{
+dropzones.forEach(el => {
     el.addEventListener("dragleave", function( event ) {
         if(dragClass.className.substr(0, 6) == el.className.substr(0, 6)){
             el.classList.remove('country-active');
@@ -45,23 +45,23 @@ dropzones.forEach(el=>{
 //TODO: TOUCHMOVE
 const slider = document.querySelector(".slider");
 const listItem = document.querySelector(".list-item");
-slider.style.marginLeft=`-${listItem.offsetWidth*2}px`;
-slider.style.width=`${listItem.offsetWidth*0.9}px`;
+slider.style.marginLeft = `-${listItem.offsetWidth * 2}px`;
+slider.style.width = `${listItem.offsetWidth * 0.9}px`;
 document.querySelector(`[href="#groupCont"]`).classList.add('active');
 const changeNav = (entries, observer) => {
     entries.forEach((entry) => {
         if(entry.isIntersecting && entry.intersectionRatio >= 0.45) {
             let id = entry.target.getAttribute('id');
             window.addEventListener("resize", e => {
-            if(id=="groupCont") slider.style.marginLeft=`-${listItem.offsetWidth*2}px`;
-            else if(id=="thirdplacesCont") slider.style.marginLeft="0";
-            else if(id=="koCont") slider.style.marginLeft=`${listItem.offsetWidth*2}px`;
-            slider.style.width=`${listItem.offsetWidth*0.9}px`;
+            if(id == "groupCont") slider.style.marginLeft = `-${listItem.offsetWidth * 2}px`;
+            else if(id == "thirdplacesCont") slider.style.marginLeft = "0";
+            else if(id == "koCont") slider.style.marginLeft = `${listItem.offsetWidth * 2}px`;
+            slider.style.width = `${listItem.offsetWidth * 0.9}px`;
             });
             document.querySelector('.active').classList.remove('active');
-            if(id=="groupCont") slider.style.marginLeft=`-${listItem.offsetWidth*2}px`;
-            else if(id=="thirdplacesCont") slider.style.marginLeft="0";
-            else if(id=="koCont") slider.style.marginLeft=`${listItem.offsetWidth*2}px`;
+            if(id == "groupCont") slider.style.marginLeft = `-${listItem.offsetWidth * 2}px`;
+            else if(id == "thirdplacesCont") slider.style.marginLeft = "0";
+            else if(id == "koCont") slider.style.marginLeft = `${listItem.offsetWidth * 2}px`;
             document.querySelector(`[href="#${id}"]`).classList.add('active');
         }
     });
@@ -78,21 +78,21 @@ sections.forEach((section) => {
 
 const focusOn = function(el){
     let clas = el.className.slice(8);
-    if(clas=="groupContNavItem" || clas=="groupContNavItem active") slider.style.marginLeft=`-${listItem.offsetWidth*2}px`;
-    else if(clas=="thirdplacesContNavItem" || clas=="thirdplacesContNavItem active") slider.style.marginLeft="0";
-    else if(clas=="koContNavItem" || clas=="koContNavItem active") slider.style.marginLeft=`${listItem.offsetWidth*2}px`;
+    if(clas == "groupContNavItem" || clas == "groupContNavItem active") slider.style.marginLeft = `-${listItem.offsetWidth * 2}px`;
+    else if(clas == "thirdplacesContNavItem" || clas == "thirdplacesContNavItem active") slider.style.marginLeft = "0";
+    else if(clas == "koContNavItem" || clas == "koContNavItem active") slider.style.marginLeft = `${listItem.offsetWidth * 2}px`;
 }
 const focusOut = function(){
     let clas = document.querySelector('.active').className.slice(8);
-    if(clas=="groupContNavItem active") slider.style.marginLeft=`-${listItem.offsetWidth*2}px`;
-    else if(clas=="thirdplacesContNavItem active") slider.style.marginLeft="0";
-    else if(clas=="koContNavItem active") slider.style.marginLeft=`${listItem.offsetWidth*2}px`;
+    if(clas == "groupContNavItem active") slider.style.marginLeft = `-${listItem.offsetWidth * 2}px`;
+    else if(clas == "thirdplacesContNavItem active") slider.style.marginLeft = "0";
+    else if(clas == "koContNavItem active") slider.style.marginLeft = `${listItem.offsetWidth * 2}px`;
 }
 
 
 
 const links = document.querySelectorAll('.navItem');
-links.forEach(el=>{
+links.forEach(el => {
     el.addEventListener("mouseover", function(){
         focusOn(el);
     })
@@ -117,7 +117,7 @@ scroll1.addEventListener("click", function(){
     thirdplacesCont.scrollIntoView({behavior: "smooth"});
     thirdplacesFill();
     let groupCountries = document.querySelectorAll(".groupCont .country");
-    groupCountries.forEach(el=>{
+    groupCountries.forEach(el => {
         el.draggable = false;
         el.style.pointerEvents = "none";
     })
@@ -129,13 +129,13 @@ scroll1.addEventListener("click", function(){
 function thirdplacesFill(){
     let places = document.querySelectorAll(".place3>div");
     let placesThird = document.querySelectorAll(".placeThird");
-    placesThird.forEach((el,i)=>{
+    placesThird.forEach((el, i) => {
         el.appendChild(places[i].cloneNode(true));
         el.id += "copy"
     })
     let countriesThird = document.querySelectorAll(".placeThird>div");
-    countriesThird.forEach(el=>{
-        el.className ="thirdG country";
+    countriesThird.forEach(el => {
+        el.className = "thirdG country";
         el.id += "copy"
     })
 }
@@ -145,7 +145,7 @@ scroll2.addEventListener("click", function(){
     koCont.scrollIntoView({behavior: "smooth"});
     koFill();
     let thirdCountries = document.querySelectorAll(".thirdplacesCont .country");
-    thirdCountries.forEach(el=>{
+    thirdCountries.forEach(el => {
         el.draggable = false;
         el.style.pointerEvents = "none";
     })
@@ -198,13 +198,13 @@ function koFill(){
     const fRadio = koCont.querySelectorAll("input.f");   //final
 
     let classRadio = "";
-    sqRadio.forEach((el,i)=>{
+    sqRadio.forEach((el, i) => {
         el.nextElementSibling.firstChild.style.pointerEvents = "all";
         el.addEventListener("change", function(){
             classRadio = el.className.substr(0,5);
-            qRadio.forEach((e,j)=>{
+            qRadio.forEach((e, j) => {
                 if(e.className.substr(0,5) == classRadio){
-                    if(e.nextElementSibling.innerHTML=="")e.nextElementSibling.append(el.nextElementSibling.firstChild.cloneNode(true));
+                    if(e.nextElementSibling.innerHTML == "")e.nextElementSibling.append(el.nextElementSibling.firstChild.cloneNode(true));
                     else{
 
                         let eNext = document.querySelectorAll(`.q .${e.className.substr(6,5)}`);
@@ -223,7 +223,7 @@ function koFill(){
                         fNext.forEach(fNextEl => {
                             fNextEl.checked = false;
                         })
-                        e.nextElementSibling.innerHTML=el.nextElementSibling.innerHTML;
+                        e.nextElementSibling.innerHTML = el.nextElementSibling.innerHTML;
                         scroll3.style.pointerEvents = "none";
                         scroll3.disabled = true;
                     }
@@ -250,7 +250,7 @@ function koFill(){
                             fNext2.forEach(fNextEl => {
                                 fNextEl.checked = false;
                             })
-                            e.nextElementSibling.innerHTML=el.nextElementSibling.innerHTML;
+                            e.nextElementSibling.innerHTML = el.nextElementSibling.innerHTML;
                             scroll3.style.pointerEvents = "none";
                             scroll3.disabled = true;
                         }
@@ -270,13 +270,13 @@ function koFill(){
             fRadio.forEach((e, j) => {
                 if(brothers[0].nextElementSibling.innerHTML != "" && brothers[1].nextElementSibling.innerHTML != ""){
                     if(e.className.substr(0,5) == classRadio){
-                        if(e.nextElementSibling.innerHTML=="")e.nextElementSibling.append(el.nextElementSibling.firstChild.cloneNode(true));
+                        if(e.nextElementSibling.innerHTML == "")e.nextElementSibling.append(el.nextElementSibling.firstChild.cloneNode(true));
                         else {
                             let eNext3 = document.querySelectorAll(`.f .${e.className.substr(6,5)}`);
                             eNext3.forEach(eNextEl => {
                                 eNextEl.checked = false;
                             })
-                            e.nextElementSibling.innerHTML=el.nextElementSibling.innerHTML;
+                            e.nextElementSibling.innerHTML = el.nextElementSibling.innerHTML;
                             scroll3.style.pointerEvents = "none";
                             scroll3.disabled = true;
                         }
@@ -288,7 +288,7 @@ function koFill(){
             })
         })
     })
-    fRadio.forEach((el,i)=>{
+    fRadio.forEach((el, i) => {
         el.addEventListener("change", function(){
             if(fRadio[0].nextElementSibling.innerHTML == "" || fRadio[1].nextElementSibling.innerHTML == ""){
                 el.checked = false;

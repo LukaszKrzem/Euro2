@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sprawdź swoją wiedzę piłkarską, przewidując wyniki nadchodzącego EURO 2020.">
+    <meta name="theme-color" content="#ff7c22">
     <title>Euro</title>
     <link rel="icon" href="trophy.png" type="image/png" sizes="16x16">
 </head>
@@ -253,6 +255,7 @@
     <button class="submit" id="submit2" disabled style="pointer-events: none;">zatwierdź</button>
 </section>
 <section class="koCont section" id="koCont">
+    <div class="koLevel koOneSixteen">1/16 finału</div>
     <div class="koGame sq sq1">
         <input autocomplete="off" class="toQ1a sq" type="radio" id="sq1a" name="sq1">
         <label class="sq1a a" for="sq1a"></label>
@@ -318,6 +321,7 @@
     </div>
 
 
+    <div class="koLevel koQuaterFinal">ćwierćfinały</div>
     <div class="koGame q q1">
         <input autocomplete="off" class="toQ1a toS1a q" type="radio" id="q1a" name="q1">
         <label class="q1a a" for="q1a"></label>
@@ -349,6 +353,7 @@
     </div>
 
 
+    <div class="koLevel koSemifinal">półfinały</div>
     <div class="koGame s s1">
         <input autocomplete="off" class="toS1a toF1a s" type="radio" id="s1a" name="s1">
         <label class="s1a a" for="s1a"></label>
@@ -365,6 +370,7 @@
     </div>
 
 
+    <div class="koLevel koFinal">finał</div>
     <div class="koGame f">
         <input autocomplete="off" class="toF1a f" type="radio" id="f1a" name="f1">
         <label class="f1a a" for="f1a"></label>
@@ -375,5 +381,6 @@
     <button class="submit" id="submit3" disabled style="pointer-events: none;">zatwierdź</button>
 </section>
 <script src="main.js"></script>
+<script src="DragDropTouch.js"></script>
 </body>
 </html>

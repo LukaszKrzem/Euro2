@@ -1,9 +1,13 @@
+/*!MAIN STYLES*/
 :root {
     --background-first: #ff7c22;
-    --backgrouund-second: #ffe600;
+    --background-second: #ffe600;
+    --transparency-very-high: rgba(255,255,255,0.1);
+    --transparency-high: rgba(255,255,255,0.2);
+    --transparency-medium:rgba(255,255,255,0.4);
+    --transparency-low: rgba(255, 255, 255, 0.5);
+    --transparency-very-low: rgba(255, 255, 255, 0.644);
 }
-
-
 *{
     box-sizing: border-box;
 }
@@ -14,14 +18,14 @@ body{
     flex-direction: column;
     align-items: center;
     font-family: sans-serif;
-    background: linear-gradient(to bottom right, var(--backgrouund-second) 0%, var(--background-first) 100%);
+    background: linear-gradient(to bottom right, var(--background-second) 0%, var(--background-first) 100%);
 }
 html{
     scroll-behavior: smooth;
     user-select: none;
 }
 
-/*NAWIGATION*/
+/*!NAWIGATION*/
 .nav{
     z-index: 10;
     top: 0;
@@ -30,6 +34,7 @@ html{
     left: 0;
     width: 100%;
     background-color: rgba(255,255,255,0.2);
+    letter-spacing: 4px;
 }
 .nav-list{
     margin: 0;
@@ -42,7 +47,6 @@ html{
 .list-item{
     width: 20%;
 }
-
 .navItem{
     color: #fff;
     text-decoration: none;
@@ -59,7 +63,7 @@ html{
     bottom: 0px;
 }
 
-/*GROUP CONTAINERS*/
+/*!MAIN THREE CONTAINERS*/
 .groupCont, .thirdplacesCont, .koCont{
     width: 100%;
     display: grid;
@@ -70,20 +74,21 @@ html{
     padding: 20px 10% 40px;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
-    background: linear-gradient(to bottom right, var(--backgrouund-second) 0%, var(--background-first) 100%);
+    background: linear-gradient(to bottom right, var(--background-second) 0%, var(--background-first) 100%);
 }
 .thirdplacesCont{
     padding: 50px 0 20px;
-    background: linear-gradient(to top right, var(--backgrouund-second) 0%, var(--background-first) 100%);
+    background: linear-gradient(to top right, var(--background-second) 0%, var(--background-first) 100%);
     /*     background: linear-gradient(to bottom right, var(--background-first) 0%, rgba(255, 124, 34, 0.738) 19%, rgba(255, 124, 34, 0.541) 34%, rgba(255, 124, 34, 0.382) 47%, rgba(255, 124, 34, 0.278) 56.5%, rgba(255, 124, 34, 0.194) 65%, rgba(255, 124, 34, 0.126) 73%, rgba(255, 124, 34, 0.075) 80.2%, rgba(255, 124, 34, 0.042) 86.1%, rgba(255, 124, 34, 0.021) 91%, rgba(255, 124, 34, 0.08) 95.2%, rgba(255, 124, 34, 0.002) 98.2%, transparent 100%);*/
 }
 .koCont{
     padding: 40px 0;
     row-gap: 30px;
-    background: linear-gradient(to bottom right, var(--backgrouund-second) 0%, var(--background-first) 100%);
+    background: linear-gradient(to bottom right, var(--background-second) 0%, var(--background-first) 100%);
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
+    grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
     grid-template-areas:
+      "sq q s fi"
       "sq1 q1 s1 f"
       "sq2 q1 s1 f"
       "sq3 q2 s1 f"
@@ -95,15 +100,26 @@ html{
       "button button button button";
 }
 
-/*FINAŁY - TEMPLATE*/
+/*!FINAŁY - TEMPLATE*/
 .koGame{
     background-color: rgba(236, 236, 236, 0.432);
     border-radius: 20px;
     width: 60%;
-    height: 110px/*80px*/;
+    height: 110px;
     display: flex;
     flex-direction: column;
 }
+.koLevel{
+    /*position: sticky;
+    top: 50px;*/
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+.koOneSixteen {grid-area: sq;}
+.koOneQuaterfinal {grid-area: q;}
+.koOneSemifinal {grid-area: s;}
+.koOneFinal {grid-area: fi;}
 .sq1 { grid-area: sq1; }
 .sq2 { grid-area: sq2; }
 .sq3 { grid-area: sq3; }
@@ -121,7 +137,7 @@ html{
 .f { grid-area: f; }
 #submit3 {grid-area: button}
 
-/*GROUPS*/
+/*!GROUPS STYLES*/
 .group, .thirdplacesGroup{
     display: flex;
     flex-direction: column;
@@ -138,9 +154,7 @@ html{
     margin-top: 100px;
 }
 
-
-/*GROUP ELEMENTS*/
-
+/*!GROUP ELEMENTS*/
 .caption{
     width: 100%;
     height: 55px;
@@ -239,50 +253,6 @@ html{
 .country-active{
     background-color: rgba(255,255,255,0.4);
 }
-
-.submit{
-    height: 50px;
-    width: 250px;
-    cursor: pointer;
-    color: #fff;
-    transition: all 0.3s;
-    position: relative;
-    background-color: rgba(255,255,255,0.1);
-    border: none;
-    font-size: 1rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
-}
-.submit:hover, .submit:active{
-    letter-spacing: 4px;
-    background-color: transparent;
-}
-.submit::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0;
-    transition: all 0.3s;
-    border-top: 1px solid rgba(255,255,255,0.5);
-    border-bottom: 1px solid rgba(255,255,255,0.5);
-    transform: scale(0.1, 1);
-}
-.submit:hover::before .submit:active::before{
-    opacity: 1;
-    transform: scale(1, 1);
-}
-#submit1{
-    grid-column-start: 2;
-}
-#submit2{
-    margin-top: 60px;
-}
 .a .country{
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
@@ -325,17 +295,63 @@ label .country{
     display: inline-block;
 }
 
-/*SROLLBAR*/
+/*!BUTTONS*/
+.submit{
+    height: 50px;
+    width: 250px;
+    cursor: pointer;
+    color: #fff;
+    transition: all 0.3s;
+    position: relative;
+    background-color: rgba(255,255,255,0.1);
+    border: none;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.submit:hover, .submit:active, .submit:focus{
+    letter-spacing: 4px;
+    background-color: transparent;
+}
+.submit::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s;
+    border-top: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    transform: scale(0.1, 1);
+}
+.submit:hover::before, .submit:active::before, .submit:focus::before{
+    opacity: 1;
+    transform: scale(1, 1);
+}
+#submit1{
+    grid-column-start: 2;
+}
+#submit2{
+    margin-top: 60px;
+}
+
+/*!SROLLBAR*/
 ::-webkit-scrollbar {
     width: 15px;
 }
 ::-webkit-scrollbar-track {
     background: #ff7a22a1;
-
 }
 ::-webkit-scrollbar-thumb {
     background: #ff7c22;
 }
+
+/*!MEDIA QUERIES*/
 @media (min-width: 1800px) {
     .nav, .group, .place::before, .submit, .koGame label, .koGame .country{
         font-size: 1.3rem;
@@ -389,6 +405,14 @@ label .country{
     .koGame label p{
         display: none;
     }
+    .nav{
+        letter-spacing: 3px;
+    }
+}
+@media (max-width: 1100px) {
+    .nav{
+        letter-spacing: 1px;
+    }
 }
 @media (max-width: 900px) {
     .nav-list{
@@ -399,6 +423,9 @@ label .country{
     }
 }
 @media (max-width: 800px) {
+    .koLevel{
+        display: none;
+    }
     .koGame .country-flag,
     .koGame .country::after{
         height: 30px;
@@ -433,6 +460,12 @@ label .country{
         height: 40px;
     }
 }
+@media (max-width: 550px) {
+    .first-nav::after{
+        content: "\a";
+        white-space: pre;
+    }
+}
 @media (max-width: 500px) {
     .groupCont .country-flag{
         height: 25px;
@@ -448,10 +481,6 @@ label .country{
     }
     .groupCont{
         padding: 0 2% 40px;
-    }
-    .first-nav::after{
-        content: "\a";
-        white-space: pre;
     }
     .groupCont{
         padding-top: 30px
